@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="payement.css">
+</head>
+<body>
+
+<div class="payment-container">
+    <h2 th:text="|Welcome user ${username}|"></h2>
+    <p>Complete your payment by clicking the button below : </p>
+
+    <form action="#" th:action="@{/processPayement}" method="post">
+        <button class="pay-button">Pay Now</button>
+    </form>
+</div>
+
+</body>
+</html>
