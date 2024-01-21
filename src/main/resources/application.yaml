@@ -1,0 +1,16 @@
+spring:
+  ssl:
+    bundle:
+      jks:
+        https-server:
+          key:
+            alias: "grebacKS"
+            password: "heplPass"
+          keystore:
+            location: "src\\main\\resources\\keystore.jks"
+            password: "heplPass"
+server:
+  ssl:
+    client-auth: want
+    bundle: "https-server"
+  port: 8043

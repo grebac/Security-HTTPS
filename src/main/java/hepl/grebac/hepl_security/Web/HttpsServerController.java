@@ -5,13 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @Controller
-public class authenticationController {
+public class HttpsServerController {
     final DBHandler dbHandler;
 
-    public authenticationController(DBHandler dbHandler) {
+    public HttpsServerController(DBHandler dbHandler) {
         this.dbHandler = dbHandler;
     }
 
