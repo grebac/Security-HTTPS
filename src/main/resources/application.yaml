@@ -4,10 +4,10 @@ spring:
       jks:
         https-server:
           key:
-            alias: "grebacKS"
+            alias: "https"
             password: "heplPass"
           keystore:
-            location: "src\\main\\resources\\keystore.jks"
+            location: "https.jks"
             password: "heplPass"
 server:
   ssl:

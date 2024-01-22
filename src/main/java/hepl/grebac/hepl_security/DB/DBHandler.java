@@ -48,6 +48,10 @@ public class DBHandler {
 
             var dbPassword = result.getString("password");
 
+            // The user is not in the database
+            if(dbPassword == null)
+                return false;
+
             return dbPassword.equals(password);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

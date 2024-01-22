@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>hepl.grebac</groupId>
-    <artifactId>HEPL_Security</artifactId>
+    <artifactId>HTTPS</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>HEPL_Security</name>
     <description>HEPL_Security</description>

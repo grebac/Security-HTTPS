@@ -1,16 +1,23 @@
 package hepl.grebac.hepl_security.Web;
 
 import hepl.grebac.hepl_security.DB.DBHandler;
+import hepl.grebac.hepl_security.TLS.requestToACQ;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Controller
 public class HttpsServerController {
     final DBHandler dbHandler;
+    final requestToACQ requestToACQ;
 
-    public HttpsServerController(DBHandler dbHandler) {
+    @Autowired
+    public HttpsServerController(DBHandler dbHandler, requestToACQ requestToACQ) {
         this.dbHandler = dbHandler;
+        this.requestToACQ = requestToACQ;
     }
 
 
@@ -34,13 +41,24 @@ public class HttpsServerController {
     }
 
     @GetMapping("/payement")
-    public String payement(Model model, @RequestParam(name = "username", defaultValue = "client")String username) {
+    public String payement(Model model, @RequestParam(name = "username", defaultValue = "client")String username, @RequestParam(name = "payementError", defaultValue = "false")Boolean payementError) {
         model.addAttribute("username", username);
+        model.addAttribute("payementError", payementError);
         return "payement";
     }
 
     @PostMapping(value = "/processPayement")
     public String processPayement(Model model) {
-        return "redirect:/payement";
+        try {
+            var payementValid = requestToACQ.requestToACS();
+
+            if(payementValid) {
+                return "payementValid";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:/payement?payementError=true";
     }
 }

@@ -15,6 +15,7 @@
     <form action="#" th:action="@{/processPayement}" method="post">
         <button class="pay-button">Pay Now</button>
     </form>
+    <div th:if="${payementError}" class="error-message">Payement Failed!</div>
 </div>
 
 </body>
