@@ -13,6 +13,8 @@
     <p>Complete your payment by clicking the button below : </p>
 
     <form action="#" th:action="@{/processPayement}" method="post">
+        <label for="tokenInput">Token:</label>
+        <input type="text" id="tokenInput" name="token" placeholder="Enter your token..." required>
         <button class="pay-button">Pay Now</button>
     </form>
     <div th:if="${payementError}" class="error-message">Payement Failed!</div>

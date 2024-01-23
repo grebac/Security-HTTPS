@@ -48,9 +48,9 @@ public class HttpsServerController {
     }
 
     @PostMapping(value = "/processPayement")
-    public String processPayement(Model model) {
+    public String processPayement(@RequestParam String token, Model model) {
         try {
-            var payementValid = requestToACQ.requestToACS();
+            var payementValid = requestToACQ.requestToACS(token);
 
             if(payementValid) {
                 return "payementValid";

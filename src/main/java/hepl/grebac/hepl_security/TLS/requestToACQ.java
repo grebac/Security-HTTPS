@@ -16,14 +16,14 @@ public class requestToACQ {
         System.setProperty("javax.net.ssl.trustStorePassword", "heplPass");
     }
 
-    public boolean requestToACS() throws IOException {
+    public boolean requestToACS(String token) throws IOException {
         SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
         SSLSocket sslSocketForACS = (SSLSocket) sslsocketfactory.createSocket("localhost", 7777);
 
         var writer = GetBufferedWriter(sslSocketForACS);
         var reader = GetBufferedReader(sslSocketForACS);
 
-        writer.write("Here is the client token (HTTPS Serv)\n");
+        writer.write(token + "\n");
         writer.flush();
 
         var answer = reader.readLine();
